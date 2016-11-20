@@ -20,6 +20,4 @@ if [ "${AWS_ACCESS_KEY_ID}" == "zero" ]; then
   exit 1
 fi
 
-LOCALPATH=`echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")`
-
-docker run --rm -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-zero} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-zero} -v $LOCALPATH:/build ubirch/aws-tools aws s3 sync /build $2 --dryrun --exclude ".git*" --delete
+aws s3 sync /build $1 --dryrun --exclude ".git*" --delete
