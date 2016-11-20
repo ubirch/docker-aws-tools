@@ -20,4 +20,5 @@ if [ "${AWS_ACCESS_KEY_ID}" == "zero" ]; then
   exit 1
 fi
 
-aws s3 sync /build $1 --dryrun --exclude ".git*" --delete
+
+aws s3 sync /build $1 --exclude ".git*" --delete
