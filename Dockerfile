@@ -14,13 +14,13 @@ MAINTAINER Falko Zurell <falko.zurell@ubirch.com>
         org.label-schema.vcs-url="https://github.com/ubirch/docker-aws-tools"
 
 LABEL description="uBirch aws tools container"
-RUN apt-get update && apt-get install python-pip -y && \
-    apt-get autoclean && apt-get --purge -y autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update
+RUN apt-get install python-pip -y
 RUN pip install boto
 RUN pip install boto3
 RUN pip install awscli
 
+ADD scripts /opt/scripts
 WORKDIR /opt
 VOLUME /build
 WORKDIR /build
